@@ -560,14 +560,14 @@ class LucidSonicDream:
                     'minibatch_size': batch_size}
     else:
         Gs_syn_kwargs = {'noise_mode': 'const'} # random, const, None
-
-    # Set-up temporary frame directory
-    # Fixme: Save images to RAM
+#------#--zedfix---------
+     #Set-up temporary frame directory
+     #Fixme: Save images to RAM
     #self.frames_dir = file_name.split('.mp4')[0] + '_frames'
-    #if os.path.exists(self.frames_dir):
+   # if os.path.exists(self.frames_dir):
     #    shutil.rmtree(self.frames_dir)
-    #os.makedirs(self.frames_dir)
-
+   # os.makedirs(self.frames_dir)
+#------
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # Generate frames
@@ -609,15 +609,15 @@ class LucidSonicDream:
             # If resolution is provided, resize
             if resolution:
                 final_image = final_image.resize((resolution, resolution))
-
+#--zedfix---------
             # Save. Include leading zeros in file name to keep alphabetical order
             #max_frame_index = num_frame_batches * batch_size + batch_size
             #file_name = str(image_index)\
             #        .zfill(len(str(max_frame_index)))
             #final_image.save(os.path.join(self.frames_dir, file_name + '.jpg'), quality=95) #, subsample=0, quality=95)
-            
+ #--------           
             # Dirty global varible hacks :)
-            all_frames.append(final_image)
+            #all_frames.append(final_image)
         
         del image_batch
         del noise_batch
